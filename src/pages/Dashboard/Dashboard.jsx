@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { showInfo } from "../../utils/toast";
 import EpisodeCard from "../../components/EpisodeCard/EpisodeCard";
 
 export default function Dashboard({ episodes }) {
@@ -10,11 +10,7 @@ export default function Dashboard({ episodes }) {
     if (!hasSeenWelcome) {
       // Show welcome message on first visit
       setTimeout(() => {
-        toast.info("Welcome to your TARDIS Media Library!", {
-          position: "top-right",
-          autoClose: 4000,
-          theme: "dark",
-        });
+        showInfo("Welcome to your TARDIS Media Library!");
       }, 100);
 
       // Mark having seen the message

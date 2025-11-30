@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { showSuccess, showWarning, showError } from "../../utils/toast";
 
 export default function AddEpisode({ onAddEpisode }) {
   const navigate = useNavigate();
@@ -29,11 +29,7 @@ export default function AddEpisode({ onAddEpisode }) {
       onAddEpisode(newEpisode);
 
       // Show success toast
-      toast.success(`"${formData.title}" added to your library!`, {
-        position: "top-right",
-        autoClose: 3000,
-        theme: "dark",
-      });
+      showSuccess(`"${formData.title}" added to your library!`);
 
       // Reset form
       setFormData({
@@ -50,11 +46,7 @@ export default function AddEpisode({ onAddEpisode }) {
       }, 1000);
     } catch (error) {
       // Show error toast
-      toast.error("Failed to add episode. Please try again.", {
-        position: "top-right",
-        autoClose: 4000,
-        theme: "dark",
-      });
+      showError("Failed to add episode. Please try again.");
       console.error("Error adding episode:", error);
     } finally {
       setIsSubmitting(false);
@@ -71,11 +63,7 @@ export default function AddEpisode({ onAddEpisode }) {
   const handleCancel = () => {
     if (formData.title || formData.notes) {
       // Show warning if there's unsaved data
-      toast.warn("Episode data not saved", {
-        position: "top-right",
-        autoClose: 3000,
-        theme: "dark",
-      });
+      showWarning("Episode data not saved");
     }
     navigate("/library");
   };
