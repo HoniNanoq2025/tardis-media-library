@@ -9,11 +9,13 @@ export default function Dashboard({ episodes }) {
 
     if (!hasSeenWelcome) {
       // Show welcome message on first visit
-      toast.info("Welcome to your TARDIS Media Library!", {
-        position: "top-right",
-        autoClose: 4000,
-        theme: "dark",
-      });
+      setTimeout(() => {
+        toast.info("Welcome to your TARDIS Media Library!", {
+          position: "top-right",
+          autoClose: 4000,
+          theme: "dark",
+        });
+      }, 100);
 
       // Mark having seen the message
       sessionStorage.setItem("hasSeenWelcome", "true");
