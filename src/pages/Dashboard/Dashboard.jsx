@@ -48,7 +48,7 @@ export default function Dashboard({ episodes }) {
           <h3 className="text-lg font-semibold mb-2">Total Episodes</h3>
           <p className="text-4xl font-bold">{totalEpisodes}</p>
         </div>
-        <div className="bg-linear-to-br from-purple-600 to-purple-800 p-6-rounded-lg shadow">
+        <div className="bg-linear-to-br from-purple-600 to-purple-800 p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-2">Favorite Doctor</h3>
           <p className="text-3xl font-bold">{favoriteDoctor}</p>
         </div>
