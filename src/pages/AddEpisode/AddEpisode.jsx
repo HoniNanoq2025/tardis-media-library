@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default function AddEpisode() {
+export default function AddEpisode({ onAddEpisode }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
@@ -91,7 +91,7 @@ export default function AddEpisode() {
 
       <div className="max-w-2xl">
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-          <form onSubmit={handleSubmut} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="">
                 {/* EPISODE TITLE */}

@@ -9,7 +9,7 @@ import About from "./pages/About/About.jsx";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
-  const [episode, setEpisodes] = useState([
+  const [episodes, setEpisodes] = useState([
     {
       id: 1,
       title: "The Eleventh Hour",
@@ -37,7 +37,7 @@ export default function App() {
   ]);
 
   const handleAddEpisode = (newEpisode) => {
-    setEpisodes([...setEpisodes, newEpisode]);
+    setEpisodes([...episodes, newEpisode]);
     // Tilføj API kald her senere
     console.log("Would send to API:", newEpisode);
   };
