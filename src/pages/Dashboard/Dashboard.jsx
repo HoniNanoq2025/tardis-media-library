@@ -5,12 +5,19 @@ import EpisodeCard from "../../components/EpisodeCard/EpisodeCard";
 
 export default function Dashboard({ episodes }) {
   useEffect(() => {
-    // Show welcome message on first visit
-    toast.info("Welcome to your TARDIS Media Library!", {
-      position: "top-right",
-      autoClose: 4000,
-      theme: "dark",
-    });
+    const hasSeenWelcome = sessionStorage.getItem("hasSeenWelcome");
+
+    if (!hasSeenWelcome) {
+      // Show welcome message on first visit
+      toast.info("Welcome to your TARDIS Media Library!", {
+        position: "top-right",
+        autoClose: 4000,
+        theme: "dark",
+      });
+
+      // Mark having seen the message
+      sessionStorage.setItem("hasSeenWelcome", "true");
+    }
   }, []);
 
   const totalEpisodes = episodes.length;

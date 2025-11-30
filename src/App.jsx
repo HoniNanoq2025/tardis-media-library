@@ -9,37 +9,44 @@ import About from "./pages/About/About.jsx";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
-  const [episodes, setEpisodes] = useState([
-    {
-      id: 1,
-      title: "The Eleventh Hour",
-      doctor: "11th",
-      episode: "S05E01",
-      rating: 5,
-      notes: "Fantastic introduction to the 11th Doctor!",
-    },
-    {
-      id: 2,
-      title: "Blink",
-      doctor: "10th",
-      episode: "S03E10",
-      rating: 5,
-      notes: "Don't blink! Brilliant standalone episode.",
-    },
-    {
-      id: 3,
-      title: "The Day of the Doctor",
-      doctor: "11th",
-      episode: "S07E14",
-      rating: 5,
-      notes: "50th anniversary special with multiple Doctors!",
-    },
-  ]);
+  const [episodes, setEpisodes] = useState(() => {
+    // Load fra localStorage ved opstart
+    const saved = localStorage.getItem("episodes");
+    return saved
+      ? JSON.parse(saved)
+      : [
+          {
+            id: 1,
+            title: "The Eleventh Hour",
+            doctor: "11th",
+            episode: "S05E01",
+            rating: 5,
+            notes: "Fantastic introduction to the 11th Doctor!",
+          },
+          {
+            id: 2,
+            title: "Blink",
+            doctor: "10th",
+            episode: "S03E10",
+            rating: 5,
+            notes: "Don't blink! Brilliant standalone episode.",
+          },
+          {
+            id: 3,
+            title: "The Day of the Doctor",
+            doctor: "11th",
+            episode: "S07E14",
+            rating: 5,
+            notes: "50th anniversary special with multiple Doctors!",
+          },
+        ];
+  });
 
   const handleAddEpisode = (newEpisode) => {
-    setEpisodes([...episodes, newEpisode]);
-    // Tilføj API kald her senere
-    console.log("Would send to API:", newEpisode);
+    const updatedEpisodes = [...episodes, newEpisode];
+    setEpisodes(updatedEpisodes);
+    // Gem til localStorage
+    localStorage.setItem("episodes", JSON.stringify(updatedEpisodes));
   };
 
   return (
